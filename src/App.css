@@ -1,0 +1,74 @@
+.landing-page {
+  margin: 0 auto;
+  width: 100%;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  animation: new-item-animation 0.3s linear forwards;
+}
+.landing-page .shuffle-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  padding: 0 30px;
+  margin: 30px;
+}
+
+.landing-page .quote {
+  text-align: center;
+}
+
+.landing-page .quote .quote-sign {
+  width: 40px;
+  vertical-align: top;
+}
+
+.landing-page .quote h1 {
+  font-size: 75px;
+  padding: 20px;
+}
+
+.landing-page .author {
+  padding: 20px 40px;
+  font-size: 40px;
+  margin: 0;
+}
+
+.landing-page .shuffle-button:hover {
+  cursor: pointer;
+  outline: none;
+}
+
+.landing-page .shuffle-button:focus {
+  outline: none;
+}
+
+.landing-page .shuffle-button span {
+  margin: 5px 10px;
+  font-size: 16px;
+}
+
+.landing-page .shuffle-button img {
+  width: 20px;
+}
+
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
+@keyframes new-item-animation {
+  from {
+    opacity: 0;
+    transform: translateX(20vw);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
