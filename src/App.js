@@ -3,6 +3,7 @@ import './App.css';
 import shuffleIcon from './assets/images/shuffle.svg';
 import rightQuoteIcon from './assets/images/right-quote.svg';
 import leftQuoteIcon from './assets/images/left-quote.svg';
+import html2canvas from 'html2canvas';
 
 function App() {
   const [allQuoteData, setAllQuoteData] = useState([]);
@@ -50,12 +51,38 @@ function App() {
       setView(true);
     }, 100);
   };
+  function saveAs(uri, filename) {
+    var link = document.createElement('a');
 
+    if (typeof link.download === 'string') {
+      link.href = uri;
+      link.download = filename;
+
+      //Firefox requires the link to be in the body
+      document.body.appendChild(link);
+
+      //simulate click
+      link.click();
+
+      //remove the link when done
+      document.body.removeChild(link);
+    } else {
+      window.open(uri);
+    }
+  }
+
+  const downloadImage = () => {
+    html2canvas(document.getElementById('background')).then(function (canvas) {
+      document.body.appendChild(canvas);
+      saveAs(canvas.toDataURL(), 'background.png');
+    });
+  };
   return (
     show && (
       <div
         className="landing-page"
         style={{ backgroundImage: `url(${imageUrl})` }}
+        id="background"
       >
         <div class="highlight-container">
           <div class="highlight">
@@ -82,6 +109,9 @@ function App() {
         <button onClick={onShuffleClick} className="shuffle-button">
           <img src={shuffleIcon} alt="shuffleIcon" />
           <span>Shuffle</span>
+        </button>
+        <button onClick={downloadImage} className="shuffle-button">
+          <span>Download</span>
         </button>
       </div>
     )
